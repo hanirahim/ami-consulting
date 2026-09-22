@@ -7,9 +7,9 @@ import { Reveal } from "@/components/ui/Reveal";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Réalisations",
+  title: "Exemples de sites web",
   description:
-    "Découvrez des exemples de sites web conçus par Ami Consulting. Galerie évolutive, prête à accueillir vos futures réalisations clients.",
+    "Exemples concrets de sites professionnels trouvables sur Google. Références publiques pour illustrer ce qu’Ami Consulting peut créer pour votre activité.",
   path: "/realisations",
 });
 
@@ -21,9 +21,9 @@ export default function RealisationsPage() {
           <Reveal>
             <SectionTitle
               as="h1"
-              eyebrow="Réalisations"
-              title="Des projets web concrets, présentés avec transparence"
-              description="Les exemples actuels sont des démonstrations clairement identifiées. Ils illustrent le style et l’approche d’Ami Consulting en attendant vos projets clients."
+              eyebrow="Exemples concrets"
+              title="Des sites réels à ouvrir ou rechercher sur Google"
+              description="Chaque exemple ci-dessous renvoie vers un site public existant. Ce ne sont pas des clients Ami Consulting : ce sont des références concrètes pour visualiser ce qui fonctionne en ligne."
             />
           </Reveal>
         </Container>
