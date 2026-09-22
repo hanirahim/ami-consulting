@@ -18,11 +18,10 @@ export const siteConfig = {
   },
   contact: {
     email: "hani.rahim@hotmail.fr",
-    /** Remplacez par votre numéro, ex: 06 12 34 56 78 */
-    phone: "",
-    phoneHref: "",
-    /** Format international sans + ni espaces, ex: 33612345678 — active WhatsApp */
-    whatsapp: "",
+    phone: "06 51 75 48 31",
+    phoneHref: "tel:+33651754831",
+    /** Format international sans + ni espaces — active le bouton WhatsApp */
+    whatsapp: "33651754831",
     address: "",
     zone: "France entière · accompagnement à distance",
     availability: "Réponse sous 24 à 48 h ouvrées",
