@@ -11,29 +11,8 @@ export function FounderSection() {
   return (
     <section className="py-16 sm:py-20 lg:py-24">
       <Container>
-        <div className="grid items-center gap-0 overflow-hidden rounded-3xl border border-border bg-surface lg:grid-cols-[minmax(0,22rem)_1fr]">
-          <div className="border-b border-border bg-[#ececec] lg:border-b-0 lg:border-r">
-            <Image
-              src={siteConfig.founderPhoto.src}
-              alt={siteConfig.founderPhoto.alt}
-              width={471}
-              height={514}
-              className="h-auto w-full"
-              sizes="(max-width: 1024px) 100vw, 22rem"
-              priority
-              unoptimized
-            />
-            <div className="border-t border-border bg-surface px-5 py-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
-                {founder.role}
-              </p>
-              <p className="mt-1 font-display text-xl font-semibold text-ink">
-                {founder.name}
-              </p>
-            </div>
-          </div>
-
-          <Reveal delayMs={80} className="p-6 sm:p-8 lg:p-10">
+        <div className="grid items-center gap-0 overflow-hidden rounded-3xl border border-border bg-surface lg:grid-cols-[1fr_minmax(0,16rem)]">
+          <Reveal className="order-2 p-6 sm:p-8 lg:order-1 lg:p-10">
             <SectionTitle
               eyebrow="Qui est derrière Ami Consulting ?"
               title="Un accompagnement direct, humain et responsable"
@@ -69,6 +48,27 @@ export function FounderSection() {
               </Button>
             </div>
           </Reveal>
+
+          <div className="order-1 flex flex-col items-center border-b border-border bg-[#ececec] px-6 py-6 lg:order-2 lg:items-stretch lg:border-b-0 lg:border-l lg:px-0 lg:py-0">
+            <Image
+              src={siteConfig.founderPhoto.src}
+              alt={siteConfig.founderPhoto.alt}
+              width={471}
+              height={514}
+              className="h-auto w-full max-w-[12.5rem] rounded-xl lg:max-w-none lg:rounded-none"
+              sizes="(max-width: 1024px) 200px, 16rem"
+              priority
+              unoptimized
+            />
+            <div className="mt-4 w-full px-5 py-4 lg:mt-0 lg:border-t lg:border-border/60">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
+                {founder.role}
+              </p>
+              <p className="mt-1 font-display text-xl font-semibold text-ink">
+                {founder.name}
+              </p>
+            </div>
+          </div>
         </div>
       </Container>
     </section>

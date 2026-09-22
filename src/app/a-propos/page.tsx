@@ -44,16 +44,18 @@ export default function AboutPage() {
                 </div>
               </Reveal>
               <div className="overflow-hidden rounded-2xl border border-border bg-background">
-                <Image
-                  src={siteConfig.founderPhoto.src}
-                  alt={siteConfig.founderPhoto.alt}
-                  width={471}
-                  height={514}
-                  className="h-auto w-full bg-[#ececec]"
-                  sizes="(max-width: 1024px) 100vw, 28rem"
-                  priority
-                  unoptimized
-                />
+                <div className="flex justify-center bg-[#ececec] px-6 pt-6">
+                  <Image
+                    src={siteConfig.founderPhoto.src}
+                    alt={siteConfig.founderPhoto.alt}
+                    width={471}
+                    height={514}
+                    className="h-auto w-full max-w-[11rem] rounded-xl sm:max-w-[13rem]"
+                    sizes="(max-width: 640px) 176px, 208px"
+                    priority
+                    unoptimized
+                  />
+                </div>
                 <Reveal delayMs={100} className="p-6 sm:p-8">
                   <p className="text-sm font-semibold uppercase tracking-[0.12em] text-accent">
                     Fondateur
