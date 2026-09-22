@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/layout/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { HeroVisual } from "@/components/sections/HeroVisual";
 
 export function Hero() {
   return (
@@ -36,43 +37,7 @@ export function Hero() {
         </Reveal>
 
         <Reveal delayMs={120} className="relative">
-          <div
-            className="relative mx-auto w-full max-w-lg"
-            role="img"
-            aria-label="Illustration d’un site web en cours de création"
-          >
-            <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-accent/15 via-transparent to-ink/10 blur-xl" />
-            <div className="relative overflow-hidden rounded-[1.5rem] border border-border bg-surface shadow-[0_24px_60px_rgba(11,18,32,0.12)]">
-              <div className="flex items-center gap-2 border-b border-border bg-surface-soft px-4 py-3">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#f87171]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#fbbf24]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#34d399]" />
-                <span className="ml-3 h-2 flex-1 rounded-full bg-border" />
-              </div>
-              <div className="space-y-4 p-5 sm:p-6">
-                <div className="h-8 w-28 rounded-lg bg-ink" />
-                <div className="h-4 w-3/4 max-w-[18rem] rounded-full bg-border" />
-                <div className="h-4 w-1/2 max-w-[12rem] rounded-full bg-border/80" />
-                <div className="grid grid-cols-3 gap-3 pt-2">
-                  <div className="aspect-[4/3] rounded-xl bg-accent-soft" />
-                  <div className="aspect-[4/3] rounded-xl bg-surface-soft" />
-                  <div className="aspect-[4/3] rounded-xl bg-surface-soft" />
-                </div>
-                <div className="flex gap-2 pt-2">
-                  <div className="h-10 flex-1 rounded-xl bg-accent" />
-                  <div className="h-10 w-24 rounded-xl border border-border bg-surface" />
-                </div>
-              </div>
-            </div>
-            <div className="absolute -bottom-5 -left-3 rounded-2xl border border-border bg-surface px-4 py-3 shadow-lg sm:-left-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-accent">
-                Approche
-              </p>
-              <p className="mt-1 text-sm font-medium text-ink">
-                Clair · Rapide · Sur-mesure
-              </p>
-            </div>
-          </div>
+          <HeroVisual />
         </Reveal>
       </Container>
     </section>
