@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 import { footerNav, legalNav } from "@/data/navigation";
 import { services } from "@/data/services";
-import { siteConfig } from "@/data/site";
+import { projects } from "@/data/projects";
+import { seriousLinks, siteConfig } from "@/data/site";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
@@ -28,8 +29,8 @@ export function Footer() {
                 Un projet web en tête ?
               </p>
               <p className="mt-2 text-sm leading-relaxed text-muted sm:text-base">
-                Parlez-nous de votre activité. Nous vous répondons avec une
-                proposition claire et adaptée.
+                Écrivez-nous à {siteConfig.contact.email}. Nous vous répondons
+                avec une proposition claire et adaptée.
               </p>
             </div>
             <Button href="/contact" className="shrink-0">
@@ -80,17 +81,33 @@ export function Footer() {
 
             <div className="lg:col-span-3">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/45">
-                Services
+                Liens utiles
               </p>
               <ul className="mt-4 space-y-2.5">
-                {services.map((service) => (
-                  <li key={service.id}>
-                    <Link
-                      href={service.href}
-                      className="text-sm text-white/75 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
+                {seriousLinks.map((link) => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm text-white/75 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
                     >
-                      {service.title}
-                    </Link>
+                      {link.label}
+                      <ExternalLink className="h-3.5 w-3.5" aria-hidden />
+                    </a>
+                  </li>
+                ))}
+                {projects.slice(0, 3).map((project) => (
+                  <li key={project.id}>
+                    <a
+                      href={project.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm text-white/75 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
+                    >
+                      {project.displayUrl}
+                      <ExternalLink className="h-3.5 w-3.5" aria-hidden />
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -156,6 +173,13 @@ export function Footer() {
                   </li>
                 ) : null}
               </ul>
+              <p className="mt-4 text-xs leading-relaxed text-white/45">
+                Services :{" "}
+                {services
+                  .slice(0, 3)
+                  .map((service) => service.title)
+                  .join(" · ")}
+              </p>
             </div>
           </div>
 

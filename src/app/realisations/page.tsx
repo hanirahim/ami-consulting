@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
+import { SeriousLinksSection } from "@/components/sections/SeriousLinksSection";
 import { CTASection } from "@/components/sections/CTASection";
 import { Container } from "@/components/layout/Container";
 import { SectionTitle } from "@/components/ui/SectionTitle";
@@ -30,6 +31,7 @@ export default function RealisationsPage() {
       </section>
 
       <ProjectsSection showCta={false} />
+      <SeriousLinksSection />
       <CTASection />
     </>
   );

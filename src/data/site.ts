@@ -13,7 +13,7 @@ export const siteConfig = {
     height: 328,
   },
   contact: {
-    email: "contact@amiconsulting.fr",
+    email: "hani.rahim@hotmail.fr",
     phone: "[Téléphone à renseigner]",
     phoneHref: "",
     address: "[Adresse à renseigner]",
@@ -24,3 +24,27 @@ export const siteConfig = {
     instagram: "",
   },
 } as const;
+
+/** Liens externes sérieux affichés sur le site. */
+export const seriousLinks = [
+  {
+    label: "Google — création site internet",
+    href: "https://www.google.com/search?q=cr%C3%A9ation+site+internet+professionnel",
+    description: "Recherches liées à la création de sites web",
+  },
+  {
+    label: "Google — agence web",
+    href: "https://www.google.com/search?q=agence+web+cr%C3%A9ation+site+vitrine",
+    description: "Visibilité et intention de recherche",
+  },
+  {
+    label: "Google Business Profile",
+    href: "https://www.google.com/intl/fr_fr/business/",
+    description: "Présence locale sur Google",
+  },
+  {
+    label: "Next.js (technologie)",
+    href: "https://nextjs.org/",
+    description: "Stack moderne utilisée pour des sites performants",
+  },
+] as const;

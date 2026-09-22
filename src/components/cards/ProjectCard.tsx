@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, Search } from "lucide-react";
+import { ExternalLink, Link2, Search } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
 
@@ -23,9 +23,12 @@ export function ProjectCard({
         className,
       )}
     >
-      <div
+      <a
+        href={project.href}
+        target="_blank"
+        rel="noopener noreferrer"
         className={cn(
-          "relative overflow-hidden bg-surface-soft",
+          "relative block overflow-hidden bg-surface-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
           featured
             ? "aspect-[16/11] md:aspect-auto md:min-h-[280px]"
             : "aspect-[16/10]",
@@ -33,24 +36,29 @@ export function ProjectCard({
       >
         <Image
           src={project.image}
-          alt={`Aperçu illustratif — ${project.name}`}
+          alt={`Capture du site ${project.name}`}
           fill
-          className="object-cover transition duration-500 group-hover:scale-[1.03]"
+          unoptimized
+          className="object-cover object-top transition duration-500 group-hover:scale-[1.02]"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent" />
         {project.reference ? (
           <span className="absolute left-3 top-3 rounded-lg bg-ink/90 px-2.5 py-1 text-xs font-semibold text-white">
-            Exemple public
+            Site réel
           </span>
         ) : null}
-        <span className="absolute bottom-3 left-3 rounded-lg bg-white/95 px-2.5 py-1 text-xs font-semibold text-ink">
-          {project.sector}
+        <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-lg bg-white/95 px-2.5 py-1 text-xs font-semibold text-ink">
+          <Link2 className="h-3.5 w-3.5 text-accent" aria-hidden />
+          {project.displayUrl}
         </span>
-      </div>
+      </a>
 
       <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <h3 className="font-display text-xl font-semibold tracking-tight text-ink">
+        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-accent">
+          {project.sector}
+        </p>
+        <h3 className="mt-2 font-display text-xl font-semibold tracking-tight text-ink">
           {project.name}
         </h3>
         <p className="mt-3 text-sm leading-relaxed text-muted">
@@ -82,16 +90,9 @@ export function ProjectCard({
           </ul>
         </div>
 
-        <ul className="mt-4 flex flex-wrap gap-2">
-          {project.technologies.map((tech) => (
-            <li
-              key={tech}
-              className="rounded-lg bg-accent-soft px-2.5 py-1 text-xs font-medium text-accent"
-            >
-              {tech}
-            </li>
-          ))}
-        </ul>
+        <p className="mt-4 break-all text-xs font-medium text-accent">
+          {project.href}
+        </p>
 
         <div className="mt-auto flex flex-col gap-2 pt-5 sm:flex-row sm:flex-wrap">
           <Link
@@ -100,7 +101,7 @@ export function ProjectCard({
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-accent px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            Voir le site
+            Ouvrir le site officiel
             <ExternalLink className="h-4 w-4" aria-hidden />
           </Link>
           <Link
@@ -109,14 +110,14 @@ export function ProjectCard({
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-border bg-surface px-4 py-2.5 text-sm font-semibold text-ink transition hover:bg-surface-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            Chercher sur Google
+            Voir sur Google
             <Search className="h-4 w-4" aria-hidden />
           </Link>
         </div>
 
         {project.reference ? (
           <p className="mt-3 text-xs leading-relaxed text-muted">
-            Référence publique — non réalisée par Ami Consulting.
+            Référence publique vérifiable — non réalisée par Ami Consulting.
           </p>
         ) : null}
       </div>

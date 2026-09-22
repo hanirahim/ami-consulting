@@ -3,6 +3,7 @@ import { ServicesSection } from "@/components/sections/ServicesSection";
 import { WhySection } from "@/components/sections/WhySection";
 import { MethodSection } from "@/components/sections/MethodSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
+import { SeriousLinksSection } from "@/components/sections/SeriousLinksSection";
 import { AudienceSection } from "@/components/sections/AudienceSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { ContactSection } from "@/components/sections/ContactSection";
@@ -15,7 +16,8 @@ export default function HomePage() {
       <ServicesSection limit={6} showCta />
       <WhySection />
       <MethodSection />
-      <ProjectsSection limit={3} showCta />
+      <ProjectsSection showCta />
+      <SeriousLinksSection />
       <AudienceSection />
       <FAQSection />
       <ContactSection />

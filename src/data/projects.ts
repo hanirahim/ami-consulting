@@ -6,20 +6,16 @@ export type Project = {
   objective: string;
   deliverables: string[];
   technologies: string[];
-  /** Lien public vers le site (exemple de référence). */
   href: string;
-  /** Lien Google pour retrouver l’exemple facilement. */
+  displayUrl: string;
   googleUrl: string;
   image: string;
-  /** true = exemple public de référence, pas une réalisation Ami Consulting. */
   reference: boolean;
 };
 
 /**
  * Exemples publics trouvables sur Google.
- * Ils illustrent des sites professionnels réels.
- * Ne pas les présenter comme des clients Ami Consulting.
- * Remplacez-les par vos vraies réalisations dès qu’elles sont disponibles (reference: false).
+ * Ce ne sont PAS des clients Ami Consulting.
  */
 export const projects: Project[] = [
   {
@@ -32,9 +28,11 @@ export const projects: Project[] = [
     deliverables: ["Accueil", "Carte / offre", "Réservation", "Contact"],
     technologies: ["Site vitrine", "Mobile-first", "Réservation"],
     href: "https://www.bonheur.paris/",
+    displayUrl: "bonheur.paris",
     googleUrl:
       "https://www.google.com/search?q=Paris+Bonheur+bistrot+site+officiel",
-    image: "/projects/ref-restaurant.svg",
+    image:
+      "https://image.thum.io/get/width/1200/crop/750/noanimate/https://www.bonheur.paris/",
     reference: true,
   },
   {
@@ -47,9 +45,11 @@ export const projects: Project[] = [
     deliverables: ["Services", "Équipe", "Horaires", "Prise de RDV"],
     technologies: ["Site vitrine", "SEO local", "Contact"],
     href: "https://cdpm.paris/",
+    displayUrl: "cdpm.paris",
     googleUrl:
       "https://www.google.com/search?q=Cabinet+Dentaire+Paris+Monceau",
-    image: "/projects/ref-cabinet.svg",
+    image:
+      "https://image.thum.io/get/width/1200/crop/750/noanimate/https://cdpm.paris/",
     reference: true,
   },
   {
@@ -62,8 +62,10 @@ export const projects: Project[] = [
     deliverables: ["Catalogue", "Fiches produits", "Panier", "À propos"],
     technologies: ["E-commerce", "Mobile", "Parcours d’achat"],
     href: "https://olympeetcie.fr/",
+    displayUrl: "olympeetcie.fr",
     googleUrl: "https://www.google.com/search?q=Olympe+%26+Cie+sacs+France",
-    image: "/projects/ref-artisan.svg",
+    image:
+      "https://image.thum.io/get/width/1200/crop/750/noanimate/https://olympeetcie.fr/",
     reference: true,
   },
   {
@@ -76,9 +78,11 @@ export const projects: Project[] = [
     deliverables: ["Accueil", "Boutique", "Ferme / histoire", "Livraison"],
     technologies: ["E-commerce", "Contenu métier", "SEO"],
     href: "https://spiralesdelux.fr/",
+    displayUrl: "spiralesdelux.fr",
     googleUrl:
       "https://www.google.com/search?q=Spirales+de+Lux+spiruline+bio",
-    image: "/projects/ref-producteur.svg",
+    image:
+      "https://image.thum.io/get/width/1200/crop/750/noanimate/https://spiralesdelux.fr/",
     reference: true,
   },
   {
@@ -91,8 +95,10 @@ export const projects: Project[] = [
     deliverables: ["Catalogue", "Fiches produits", "Panier", "Service client"],
     technologies: ["E-commerce", "Catalogue", "Performance"],
     href: "https://www.duralex.com/",
+    displayUrl: "duralex.com",
     googleUrl: "https://www.google.com/search?q=Duralex+boutique+officielle",
-    image: "/projects/ref-commerce.svg",
+    image:
+      "https://image.thum.io/get/width/1200/crop/750/noanimate/https://www.duralex.com/",
     reference: true,
   },
   {
@@ -105,23 +111,26 @@ export const projects: Project[] = [
     deliverables: ["Présentation", "Infos pratiques", "Avis", "Réservation"],
     technologies: ["Site vitrine", "SEO local", "Réservation"],
     href: "https://les3bornes.com/fr",
-    googleUrl: "https://www.google.com/search?q=Les+3+Born%C3%A9s+restaurant+Paris",
-    image: "/projects/ref-restaurant-2.svg",
+    displayUrl: "les3bornes.com",
+    googleUrl:
+      "https://www.google.com/search?q=Les+3+Born%C3%A9s+restaurant+Paris",
+    image:
+      "https://image.thum.io/get/width/1200/crop/750/noanimate/https://les3bornes.com/fr",
     reference: true,
   },
 ];
 
 export const projectFocus = [
   {
-    title: "Exemples réels",
-    text: "Des sites publics trouvables sur Google, pour illustrer concrètement ce à quoi peut ressembler un site professionnel.",
+    title: "Liens vérifiables",
+    text: "Chaque exemple ouvre le vrai site officiel et une recherche Google associée.",
   },
   {
     title: "Transparence",
-    text: "Ces exemples ne sont pas des clients Ami Consulting. Ils servent de références tant que notre portfolio se construit.",
+    text: "Ce ne sont pas des clients Ami Consulting. Ce sont des références publiques concrètes.",
   },
   {
     title: "Votre projet ensuite",
-    text: "On s’en inspire pour construire un site adapté à votre activité, avec votre identité et vos objectifs.",
+    text: "On s’appuie sur ces références pour construire un site adapté à votre activité.",
   },
 ] as const;
