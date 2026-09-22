@@ -13,7 +13,7 @@ export const siteConfig = {
     height: 328,
   },
   founderPhoto: {
-    src: "/founder.svg",
+    src: "/founder.png",
     alt: "Hani Rahim, fondateur d’Ami Consulting",
   },
   contact: {
