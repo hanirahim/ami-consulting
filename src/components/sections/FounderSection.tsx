@@ -11,21 +11,22 @@ export function FounderSection() {
   return (
     <section className="py-16 sm:py-20 lg:py-24">
       <Container>
-        <div className="grid gap-8 overflow-hidden rounded-3xl border border-border bg-surface lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
-          <Reveal className="relative min-h-[280px] bg-ink lg:min-h-full">
+        <div className="grid items-center gap-8 overflow-hidden rounded-3xl border border-border bg-surface lg:grid-cols-[minmax(0,22rem)_1fr]">
+          <Reveal className="border-b border-border lg:border-b-0 lg:border-r">
             <Image
               src={siteConfig.founderPhoto.src}
               alt={siteConfig.founderPhoto.alt}
-              fill
-              className="object-cover object-center"
-              sizes="(max-width: 1024px) 100vw, 40vw"
+              width={471}
+              height={514}
+              className="h-auto w-full"
+              sizes="(max-width: 1024px) 100vw, 22rem"
+              priority={false}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
-            <div className="absolute bottom-5 left-5 right-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ring">
+            <div className="border-t border-border px-5 py-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
                 {founder.role}
               </p>
-              <p className="mt-1 font-display text-2xl font-semibold text-white">
+              <p className="mt-1 font-display text-xl font-semibold text-ink">
                 {founder.name}
               </p>
             </div>
