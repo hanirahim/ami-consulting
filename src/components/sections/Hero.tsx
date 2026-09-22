@@ -66,9 +66,9 @@ export function Hero() {
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Button href="/contact">Demander un devis</Button>
+                <Button href="/devis">Demander un devis</Button>
                 <Button href="/realisations" variant="secondary">
-                  Découvrir nos réalisations
+                  Voir des exemples de sites
                 </Button>
               </div>
               <p className="mt-5 text-sm text-muted">
@@ -83,6 +83,9 @@ export function Hero() {
                 >
                   {siteConfig.contact.email}
                 </a>
+                <span className="mt-1 block text-xs sm:mt-0 sm:ml-2 sm:inline">
+                  {siteConfig.contact.zone}
+                </span>
               </p>
 
               <ul className="mt-8 grid gap-3 sm:grid-cols-3">

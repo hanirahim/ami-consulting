@@ -33,7 +33,7 @@ export function Footer() {
                 avec une proposition claire et adaptée.
               </p>
             </div>
-            <Button href="/contact" className="shrink-0">
+            <Button href="/devis" className="shrink-0">
               Demander un devis
               <ArrowRight className="h-4 w-4" aria-hidden />
             </Button>
@@ -58,6 +58,9 @@ export function Footer() {
               </p>
               <p className="mt-5 inline-flex rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium text-ring">
                 {siteConfig.contact.availability}
+              </p>
+              <p className="mt-3 text-sm text-white/55">
+                {siteConfig.contact.zone}
               </p>
             </div>
 

@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services",
     "/realisations",
     "/a-propos",
+    "/devis",
     "/contact",
     "/mentions-legales",
     "/politique-de-confidentialite",
@@ -16,6 +17,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${siteConfig.url}${route}`,
     lastModified: new Date(),
     changeFrequency: route === "" || route === "/services" ? "weekly" : "monthly",
-    priority: route === "" ? 1 : route === "/contact" ? 0.9 : 0.7,
+    priority:
+      route === ""
+        ? 1
+        : route === "/devis" || route === "/contact"
+          ? 0.95
+          : 0.7,
   }));
 }

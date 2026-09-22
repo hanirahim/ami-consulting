@@ -62,7 +62,7 @@ export function Navbar() {
 
         <div className="z-10 ml-auto flex items-center gap-3">
           <div className="hidden lg:block">
-            <Button href="/contact">Demander un devis</Button>
+            <Button href="/devis">Demander un devis</Button>
           </div>
 
           <button
@@ -107,7 +107,7 @@ export function Navbar() {
               </Link>
             );
           })}
-          <Button href="/contact" className="mt-2" fullWidth onClick={closeMenu}>
+          <Button href="/devis" className="mt-2" fullWidth onClick={closeMenu}>
             Demander un devis
           </Button>
         </Container>

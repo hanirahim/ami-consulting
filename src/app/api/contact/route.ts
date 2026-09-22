@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
+import { siteConfig } from "@/data/site";
 
 type ContactPayload = {
   firstName?: string;
@@ -8,7 +10,10 @@ type ContactPayload = {
   phone?: string;
   projectType?: string;
   budget?: string;
+  timeline?: string;
+  sector?: string;
   message?: string;
+  source?: string;
 };
 
 function isValidEmail(email: string) {
@@ -24,6 +29,12 @@ export async function POST(request: Request) {
     const email = body.email?.trim() ?? "";
     const projectType = body.projectType?.trim() ?? "";
     const message = body.message?.trim() ?? "";
+    const company = body.company?.trim() ?? "";
+    const phone = body.phone?.trim() ?? "";
+    const budget = body.budget?.trim() ?? "";
+    const timeline = body.timeline?.trim() ?? "";
+    const sector = body.sector?.trim() ?? "";
+    const source = body.source?.trim() || "contact";
 
     if (!firstName || !lastName || !email || !projectType || message.length < 20) {
       return NextResponse.json(
@@ -39,22 +50,66 @@ export async function POST(request: Request) {
       );
     }
 
-    // Prêt pour brancher un service d’e-mail (Resend, Nodemailer, etc.).
-    // Pour l’instant, la demande est validée côté serveur sans envoi externe.
-    console.info("[contact]", {
+    const payload = {
       firstName,
       lastName,
-      company: body.company?.trim() ?? "",
+      company,
       email,
-      phone: body.phone?.trim() ?? "",
+      phone,
       projectType,
-      budget: body.budget?.trim() ?? "",
+      budget,
+      timeline,
+      sector,
       message,
-    });
+      source,
+    };
+
+    console.info("[contact]", payload);
+
+    const apiKey = process.env.RESEND_API_KEY;
+    const toEmail = process.env.CONTACT_TO_EMAIL || siteConfig.contact.email;
+    const fromEmail =
+      process.env.CONTACT_FROM_EMAIL || "Ami Consulting <onboarding@resend.dev>";
+
+    if (apiKey) {
+      const resend = new Resend(apiKey);
+      const { error } = await resend.emails.send({
+        from: fromEmail,
+        to: [toEmail],
+        replyTo: email,
+        subject: `[Ami Consulting] Nouveau devis — ${projectType}`,
+        text: [
+          `Source: ${source}`,
+          `Nom: ${firstName} ${lastName}`,
+          `Entreprise: ${company || "—"}`,
+          `Email: ${email}`,
+          `Téléphone: ${phone || "—"}`,
+          `Type de projet: ${projectType}`,
+          `Secteur: ${sector || "—"}`,
+          `Budget: ${budget || "—"}`,
+          `Délai: ${timeline || "—"}`,
+          "",
+          "Message:",
+          message,
+        ].join("\n"),
+      });
+
+      if (error) {
+        console.error("[contact:resend]", error);
+        return NextResponse.json(
+          {
+            message:
+              "Votre message a bien été enregistré, mais l’e-mail n’a pas pu être envoyé. Réessayez ou écrivez-nous directement.",
+          },
+          { status: 502 },
+        );
+      }
+    }
 
     return NextResponse.json({
-      message:
-        "Votre demande a bien été reçue. Nous vous répondrons sous 24 à 48 h ouvrées.",
+      message: apiKey
+        ? "Votre demande a bien été envoyée. Nous vous répondrons sous 24 à 48 h ouvrées."
+        : `Votre demande est enregistrée. Pour une réponse immédiate, écrivez aussi à ${toEmail}. (Configurez RESEND_API_KEY pour l’envoi automatique.)`,
     });
   } catch {
     return NextResponse.json(

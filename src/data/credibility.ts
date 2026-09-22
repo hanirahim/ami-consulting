@@ -57,4 +57,5 @@ export const contactReassurance = [
   "Échange gratuit pour clarifier le besoin",
   "Devis sans engagement",
   "Interlocuteur : Hani Rahim",
+  "Accompagnement à distance · France entière",
 ] as const;

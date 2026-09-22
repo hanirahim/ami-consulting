@@ -3,6 +3,7 @@ export const mainNav = [
   { href: "/services", label: "Services" },
   { href: "/realisations", label: "Réalisations" },
   { href: "/a-propos", label: "À propos" },
+  { href: "/devis", label: "Devis" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
@@ -11,7 +12,8 @@ export const footerNav = [
   { href: "/services", label: "Services" },
   { href: "/realisations", label: "Réalisations" },
   { href: "/a-propos", label: "À propos" },
-  { href: "/contact", label: "Demander un devis" },
+  { href: "/devis", label: "Demander un devis" },
+  { href: "/contact", label: "Contact" },
 ] as const;
 
 export const legalNav = [

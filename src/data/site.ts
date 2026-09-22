@@ -12,11 +12,19 @@ export const siteConfig = {
     width: 760,
     height: 328,
   },
+  founderPhoto: {
+    src: "/founder.svg",
+    alt: "Hani Rahim, fondateur d’Ami Consulting",
+  },
   contact: {
     email: "hani.rahim@hotmail.fr",
-    phone: "[Téléphone à renseigner]",
+    /** Remplacez par votre numéro, ex: 06 12 34 56 78 */
+    phone: "",
     phoneHref: "",
-    address: "[Adresse à renseigner]",
+    /** Format international sans + ni espaces, ex: 33612345678 — active WhatsApp */
+    whatsapp: "",
+    address: "",
+    zone: "France entière · accompagnement à distance",
     availability: "Réponse sous 24 à 48 h ouvrées",
   },
   social: {
@@ -25,26 +33,25 @@ export const siteConfig = {
   },
 } as const;
 
-/** Liens externes sérieux affichés sur le site. */
 export const seriousLinks = [
-  {
-    label: "Google — création site internet",
-    href: "https://www.google.com/search?q=cr%C3%A9ation+site+internet+professionnel",
-    description: "Recherches liées à la création de sites web",
-  },
-  {
-    label: "Google — agence web",
-    href: "https://www.google.com/search?q=agence+web+cr%C3%A9ation+site+vitrine",
-    description: "Visibilité et intention de recherche",
-  },
   {
     label: "Google Business Profile",
     href: "https://www.google.com/intl/fr_fr/business/",
-    description: "Présence locale sur Google",
+    description: "Créer une fiche Google pour être trouvé localement",
   },
   {
-    label: "Next.js (technologie)",
+    label: "Next.js",
     href: "https://nextjs.org/",
-    description: "Stack moderne utilisée pour des sites performants",
+    description: "Technologie moderne pour des sites rapides",
+  },
+  {
+    label: "web.dev (performance)",
+    href: "https://web.dev/",
+    description: "Bonnes pratiques de performance web",
+  },
+  {
+    label: "Google Search Central",
+    href: "https://developers.google.com/search",
+    description: "Documentation officielle SEO Google",
   },
 ] as const;
