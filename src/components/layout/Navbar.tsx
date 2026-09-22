@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { mainNav } from "@/data/navigation";
-import { siteConfig } from "@/data/site";
 import { Button } from "@/components/ui/Button";
+import { Logo } from "@/components/ui/Logo";
 import { Container } from "@/components/layout/Container";
 import { cn } from "@/lib/utils";
 
@@ -26,17 +26,12 @@ export function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-md">
-      <Container className="flex h-16 items-center justify-between gap-4 sm:h-[4.25rem]">
-        <Link
-          href="/"
-          onClick={closeMenu}
-          className="font-display text-lg font-semibold tracking-tight text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-md"
+    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/95 backdrop-blur-md">
+      <Container className="relative flex h-[5.5rem] items-center justify-between gap-4 sm:h-24">
+        <nav
+          className="z-10 hidden max-w-[38%] flex-wrap items-center gap-1 lg:flex"
+          aria-label="Navigation principale"
         >
-          {siteConfig.name}
-        </Link>
-
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Navigation principale">
           {mainNav.map((item) => {
             const active =
               item.href === "/"
@@ -47,7 +42,7 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                  "rounded-lg px-2.5 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring xl:px-3",
                   active
                     ? "bg-accent-soft text-accent"
                     : "text-muted hover:bg-surface-soft hover:text-ink",
@@ -59,26 +54,34 @@ export function Navbar() {
           })}
         </nav>
 
-        <div className="hidden lg:block">
-          <Button href="/contact">Demander un devis</Button>
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <div className="pointer-events-auto">
+            <Logo onClick={closeMenu} priority size="nav" />
+          </div>
         </div>
 
-        <button
-          type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface text-ink transition hover:bg-surface-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
-          onClick={() => setOpen((value) => !value)}
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="z-10 ml-auto flex items-center gap-3">
+          <div className="hidden lg:block">
+            <Button href="/contact">Demander un devis</Button>
+          </div>
+
+          <button
+            type="button"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-white text-ink transition hover:bg-surface-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:hidden"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+            onClick={() => setOpen((value) => !value)}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </Container>
 
       <div
         id="mobile-menu"
         className={cn(
-          "border-t border-border bg-surface lg:hidden",
+          "border-t border-border bg-background lg:hidden",
           open ? "block" : "hidden",
         )}
       >

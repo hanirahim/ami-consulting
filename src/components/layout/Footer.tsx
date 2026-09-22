@@ -5,6 +5,7 @@ import { services } from "@/data/services";
 import { siteConfig } from "@/data/site";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
+import { Logo } from "@/components/ui/Logo";
 
 function isPlaceholder(value: string) {
   return value.startsWith("[") && value.endsWith("]");
@@ -43,23 +44,10 @@ export function Footer() {
         <Container className="py-14 sm:py-16">
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-4">
-              <Link
-                href="/"
-                className="inline-flex items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                <span
-                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent font-display text-sm font-bold tracking-tight text-white"
-                  aria-hidden
-                >
-                  AC
-                </span>
-                <span className="font-display text-xl font-semibold tracking-tight">
-                  {siteConfig.name}
-                </span>
-              </Link>
+              <Logo onDark size="footer" />
               <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/70">
-                Création de sites web professionnels pour entreprises,
-                indépendants, commerces et professionnels.
+                {siteConfig.tagline} pour entreprises, indépendants, commerces
+                et professionnels.
               </p>
               <p className="mt-4 text-sm text-white/50">
                 Fondé par{" "}

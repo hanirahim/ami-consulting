@@ -26,6 +26,10 @@ export function buildMetadata({
     alternates: {
       canonical: path || "/",
     },
+    icons: {
+      icon: siteConfig.logo.src,
+      apple: siteConfig.logo.src,
+    },
     openGraph: {
       title: fullTitle,
       description,
@@ -33,11 +37,20 @@ export function buildMetadata({
       siteName: siteConfig.name,
       locale: siteConfig.locale,
       type: "website",
+      images: [
+        {
+          url: siteConfig.logo.src,
+          width: siteConfig.logo.width,
+          height: siteConfig.logo.height,
+          alt: siteConfig.logo.alt,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description,
+      images: [siteConfig.logo.src],
     },
     robots: noIndex
       ? { index: false, follow: false }
