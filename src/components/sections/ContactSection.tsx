@@ -1,5 +1,6 @@
-import { Mail, Phone } from "lucide-react";
+import { CheckCircle2, Mail, Phone } from "lucide-react";
 import { siteConfig } from "@/data/site";
+import { contactReassurance } from "@/data/credibility";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { Container } from "@/components/layout/Container";
 import { SectionTitle } from "@/components/ui/SectionTitle";
@@ -9,7 +10,14 @@ type ContactSectionProps = {
   titleAs?: "h1" | "h2";
 };
 
+function isPlaceholder(value: string) {
+  return value.startsWith("[") && value.endsWith("]");
+}
+
 export function ContactSection({ titleAs = "h2" }: ContactSectionProps) {
+  const phone = siteConfig.contact.phone;
+  const showPhone = Boolean(phone) && !isPlaceholder(phone);
+
   return (
     <section id="contact" className="py-16 sm:py-20 lg:py-24">
       <Container>
@@ -19,30 +27,60 @@ export function ContactSection({ titleAs = "h2" }: ContactSectionProps) {
               as={titleAs}
               eyebrow="Contact / Devis"
               title="Parlons de votre projet"
-              description="Décrivez votre besoin en quelques lignes. Nous revenons vers vous avec une proposition claire et adaptée."
+              description="Décrivez votre besoin en quelques lignes. Vous recevez une réponse claire, avec un prochain pas concret — sans pression commerciale."
             />
+
             <div className="mt-8 space-y-4 rounded-2xl border border-border bg-surface p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.12em] text-accent">
-                Coordonnées
+                Coordonnées vérifiables
               </p>
               <a
                 href={`mailto:${siteConfig.contact.email}`}
-                className="flex items-center gap-3 text-sm text-ink transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
+                className="flex items-center gap-3 rounded-xl border border-border bg-background px-3.5 py-3 text-sm font-medium text-ink transition hover:border-accent/40 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 <Mail className="h-4 w-4 text-accent" aria-hidden />
                 {siteConfig.contact.email}
               </a>
-              <p className="flex items-center gap-3 text-sm text-muted">
-                <Phone className="h-4 w-4 text-accent" aria-hidden />
-                {siteConfig.contact.phone}
-              </p>
+
+              {showPhone ? (
+                <a
+                  href={
+                    siteConfig.contact.phoneHref ||
+                    `tel:${phone.replace(/\s+/g, "")}`
+                  }
+                  className="flex items-center gap-3 text-sm text-ink"
+                >
+                  <Phone className="h-4 w-4 text-accent" aria-hidden />
+                  {phone}
+                </a>
+              ) : (
+                <p className="text-sm text-muted">
+                  Contact principal par e-mail pour le moment.
+                </p>
+              )}
+
               <p className="text-sm leading-relaxed text-muted">
-                {siteConfig.contact.availability}
-              </p>
-              <p className="text-sm leading-relaxed text-muted">
-                Fondateur : {siteConfig.founder}
+                Fondateur :{" "}
+                <span className="font-semibold text-ink">
+                  {siteConfig.founder}
+                </span>
               </p>
             </div>
+
+            <ul className="mt-5 space-y-2.5 rounded-2xl border border-border bg-background p-5">
+              {contactReassurance.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-2.5 text-sm text-ink"
+                >
+                  <CheckCircle2
+                    className="mt-0.5 h-4 w-4 shrink-0 text-accent"
+                    aria-hidden
+                  />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </Reveal>
 
           <Reveal delayMs={100}>

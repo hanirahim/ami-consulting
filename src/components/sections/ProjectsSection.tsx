@@ -30,9 +30,9 @@ export function ProjectsSection({
           <div className="grid gap-8 lg:grid-cols-[1fr_0.85fr] lg:items-end">
             <Reveal>
               <SectionTitle
-                eyebrow="Exemples concrets"
-                title="Des sites réels, trouvables sur Google"
-                description="Voici des exemples publics de sites professionnels. Vous pouvez les ouvrir ou les rechercher sur Google. Ce ne sont pas des clients Ami Consulting : ce sont des références concrètes pour illustrer ce qui fonctionne."
+                eyebrow="Exemples de sites"
+                title="Des sites professionnels réels à consulter"
+                description="Pour juger concrètement de ce qui fonctionne en ligne, voici des sites publics vérifiables. Ce ne sont pas des clients Ami Consulting : ce sont des références ouvertes, avec lien officiel et recherche Google."
               />
             </Reveal>
 

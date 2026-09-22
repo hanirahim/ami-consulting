@@ -1,6 +1,8 @@
 import { Hero } from "@/components/sections/Hero";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { WhySection } from "@/components/sections/WhySection";
+import { TrustSection } from "@/components/sections/TrustSection";
+import { FounderSection } from "@/components/sections/FounderSection";
 import { MethodSection } from "@/components/sections/MethodSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { SeriousLinksSection } from "@/components/sections/SeriousLinksSection";
@@ -13,8 +15,10 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <TrustSection />
       <ServicesSection limit={6} showCta />
       <WhySection />
+      <FounderSection />
       <MethodSection />
       <ProjectsSection showCta />
       <SeriousLinksSection />

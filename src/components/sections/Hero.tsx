@@ -5,6 +5,7 @@ import {
   MessageSquare,
   ShieldCheck,
 } from "lucide-react";
+import { siteConfig } from "@/data/site";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/layout/Container";
 import { Reveal } from "@/components/ui/Reveal";
@@ -70,6 +71,19 @@ export function Hero() {
                   Découvrir nos réalisations
                 </Button>
               </div>
+              <p className="mt-5 text-sm text-muted">
+                Interlocuteur :{" "}
+                <span className="font-semibold text-ink">
+                  {siteConfig.founder}
+                </span>
+                {" · "}
+                <a
+                  href={`mailto:${siteConfig.contact.email}`}
+                  className="font-medium text-accent hover:underline"
+                >
+                  {siteConfig.contact.email}
+                </a>
+              </p>
 
               <ul className="mt-8 grid gap-3 sm:grid-cols-3">
                 {highlights.map(({ icon: Icon, title, text }) => (
