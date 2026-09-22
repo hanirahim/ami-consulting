@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Mail } from "lucide-react";
 import { siteConfig } from "@/data/site";
 import { founder } from "@/data/credibility";
@@ -42,8 +43,18 @@ export default function AboutPage() {
                   </Button>
                 </div>
               </Reveal>
-              <Reveal delayMs={100}>
-                <div className="rounded-2xl border border-border bg-background p-6 sm:p-8">
+              <div className="overflow-hidden rounded-2xl border border-border bg-background">
+                <Image
+                  src={siteConfig.founderPhoto.src}
+                  alt={siteConfig.founderPhoto.alt}
+                  width={471}
+                  height={514}
+                  className="h-auto w-full bg-[#ececec]"
+                  sizes="(max-width: 1024px) 100vw, 28rem"
+                  priority
+                  unoptimized
+                />
+                <Reveal delayMs={100} className="p-6 sm:p-8">
                   <p className="text-sm font-semibold uppercase tracking-[0.12em] text-accent">
                     Fondateur
                   </p>
@@ -60,8 +71,8 @@ export default function AboutPage() {
                     <Mail className="h-4 w-4" aria-hidden />
                     {siteConfig.contact.email}
                   </a>
-                </div>
-              </Reveal>
+                </Reveal>
+              </div>
             </div>
           </CornerFrame>
         </Container>

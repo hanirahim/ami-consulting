@@ -11,8 +11,8 @@ export function FounderSection() {
   return (
     <section className="py-16 sm:py-20 lg:py-24">
       <Container>
-        <div className="grid items-center gap-8 overflow-hidden rounded-3xl border border-border bg-surface lg:grid-cols-[minmax(0,22rem)_1fr]">
-          <Reveal className="border-b border-border lg:border-b-0 lg:border-r">
+        <div className="grid items-center gap-0 overflow-hidden rounded-3xl border border-border bg-surface lg:grid-cols-[minmax(0,22rem)_1fr]">
+          <div className="border-b border-border bg-[#ececec] lg:border-b-0 lg:border-r">
             <Image
               src={siteConfig.founderPhoto.src}
               alt={siteConfig.founderPhoto.alt}
@@ -20,9 +20,10 @@ export function FounderSection() {
               height={514}
               className="h-auto w-full"
               sizes="(max-width: 1024px) 100vw, 22rem"
-              priority={false}
+              priority
+              unoptimized
             />
-            <div className="border-t border-border px-5 py-4">
+            <div className="border-t border-border bg-surface px-5 py-4">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
                 {founder.role}
               </p>
@@ -30,7 +31,7 @@ export function FounderSection() {
                 {founder.name}
               </p>
             </div>
-          </Reveal>
+          </div>
 
           <Reveal delayMs={80} className="p-6 sm:p-8 lg:p-10">
             <SectionTitle

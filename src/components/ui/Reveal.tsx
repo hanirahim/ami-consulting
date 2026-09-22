@@ -16,24 +16,33 @@ export function Reveal({ children, className, delayMs = 0 }: RevealProps) {
     const node = ref.current;
     if (!node) return;
 
+    const show = () => node.classList.add("is-visible");
+
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (media.matches) {
-      node.classList.add("is-visible");
+      show();
       return;
     }
+
+    // Fallback: never leave content invisible if IO fails (tall sections, etc.)
+    const fallback = window.setTimeout(show, 1200);
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          node.classList.add("is-visible");
+          show();
+          window.clearTimeout(fallback);
           observer.unobserve(node);
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+      { threshold: 0.01, rootMargin: "0px 0px -4% 0px" },
     );
 
     observer.observe(node);
-    return () => observer.disconnect();
+    return () => {
+      window.clearTimeout(fallback);
+      observer.disconnect();
+    };
   }, []);
 
   return (
