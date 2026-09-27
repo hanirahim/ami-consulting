@@ -51,8 +51,12 @@ export default function RootLayout({
     <html
       lang="fr"
       className={`${outfit.variable} ${sourceSans.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
+      <body
+        className="flex min-h-full flex-col bg-background font-sans text-foreground"
+        suppressHydrationWarning
+      >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

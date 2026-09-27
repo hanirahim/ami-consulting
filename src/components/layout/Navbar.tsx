@@ -10,6 +10,12 @@ import { Logo } from "@/components/ui/Logo";
 import { Container } from "@/components/layout/Container";
 import { cn } from "@/lib/utils";
 
+function isActive(pathname: string, href: string) {
+  if (href.includes("#")) return false;
+  if (href === "/") return pathname === "/";
+  return pathname.startsWith(href);
+}
+
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -29,14 +35,11 @@ export function Navbar() {
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/95 backdrop-blur-md">
       <Container className="relative flex h-[5.5rem] items-center justify-between gap-4 sm:h-24">
         <nav
-          className="z-10 hidden max-w-[38%] flex-wrap items-center gap-1 lg:flex"
+          className="z-10 hidden max-w-[42%] flex-wrap items-center gap-1 lg:flex"
           aria-label="Navigation principale"
         >
           {mainNav.map((item) => {
-            const active =
-              item.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(item.href);
+            const active = isActive(pathname, item.href);
             return (
               <Link
                 key={item.href}
@@ -87,10 +90,7 @@ export function Navbar() {
       >
         <Container className="flex flex-col gap-1 py-4">
           {mainNav.map((item) => {
-            const active =
-              item.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(item.href);
+            const active = isActive(pathname, item.href);
             return (
               <Link
                 key={item.href}

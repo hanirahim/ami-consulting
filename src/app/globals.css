@@ -1,17 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f4f7fa;
-  --foreground: #3a4451;
-  --muted: #6b7585;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --muted: #64748b;
   --surface: #ffffff;
-  --surface-soft: #e8eef4;
-  --border: #d1d9e3;
-  --ink: #3a4451;
-  --accent: #5ba4d9;
-  --accent-hover: #4593cc;
-  --accent-soft: #e3f1fa;
-  --ring: #7bb8e4;
+  --surface-soft: #f1f5f9;
+  --border: #e2e8f0;
+  --ink: #07111f;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-soft: #eff6ff;
+  --ring: #60a5fa;
+  --navy: #07111f;
 }
 
 @theme inline {
@@ -26,6 +27,7 @@
   --color-accent-hover: var(--accent-hover);
   --color-accent-soft: var(--accent-soft);
   --color-ring: var(--ring);
+  --color-navy: var(--navy);
   --font-sans: var(--font-source-sans);
   --font-display: var(--font-outfit);
 }
@@ -63,12 +65,11 @@ body {
   font-family: var(--font-outfit), system-ui, sans-serif;
 }
 
-.hero-grid {
-  background-image:
-    linear-gradient(to right, color-mix(in srgb, var(--border) 55%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in srgb, var(--border) 55%, transparent) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 75%);
+.hero-atmosphere {
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 20%, rgba(37, 99, 235, 0.12), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 90% 10%, rgba(7, 17, 31, 0.06), transparent 50%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 55%, #eff6ff 100%);
 }
 
 .reveal {
@@ -84,10 +85,44 @@ body {
   transform: translateY(0);
 }
 
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s ease forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .animate-float,
+  .animate-fade-up {
+    animation: none;
   }
 }

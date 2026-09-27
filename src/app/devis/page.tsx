@@ -26,7 +26,7 @@ export default function DevisPage() {
               as="h1"
               eyebrow="Devis"
               title="Obtenez une proposition claire pour votre site"
-              description="4 informations suffisent pour démarrer : type de projet, secteur, budget approximatif et délai. Nous revenons vers vous rapidement."
+              description="Trois étapes pour démarrer : type de site, vos coordonnées, puis votre besoin. Nous revenons vers vous rapidement."
             />
             <ul className="mt-8 space-y-3 rounded-2xl border border-border bg-surface p-5">
               {contactReassurance.map((item) => (

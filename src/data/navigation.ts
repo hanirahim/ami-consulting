@@ -1,10 +1,9 @@
 export const mainNav = [
-  { href: "/", label: "Accueil" },
   { href: "/services", label: "Services" },
   { href: "/realisations", label: "Réalisations" },
+  { href: "/#methode", label: "Méthode" },
+  { href: "/#tarifs", label: "Tarifs" },
   { href: "/a-propos", label: "À propos" },
-  { href: "/devis", label: "Devis" },
-  { href: "/contact", label: "Contact" },
 ] as const;
 
 export const footerNav = [

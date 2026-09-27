@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ArrowRight, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 import { footerNav, legalNav } from "@/data/navigation";
 import { services } from "@/data/services";
-import { projects } from "@/data/projects";
 import { seriousLinks, siteConfig } from "@/data/site";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
@@ -41,7 +40,7 @@ export function Footer() {
         </Container>
       </div>
 
-      <div className="border-t border-border bg-[#3a4451] text-white">
+      <div className="border-t border-border bg-navy text-white">
         <Container className="py-14 sm:py-16">
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-4">
@@ -100,19 +99,14 @@ export function Footer() {
                     </a>
                   </li>
                 ))}
-                {projects.slice(0, 3).map((project) => (
-                  <li key={project.id}>
-                    <a
-                      href={project.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm text-white/75 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
-                    >
-                      {project.displayUrl}
-                      <ExternalLink className="h-3.5 w-3.5" aria-hidden />
-                    </a>
-                  </li>
-                ))}
+                <li>
+                  <Link
+                    href="/realisations"
+                    className="text-sm text-white/75 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
+                  >
+                    Nos réalisations
+                  </Link>
+                </li>
               </ul>
             </div>
 
