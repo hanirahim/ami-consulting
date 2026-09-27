@@ -1,17 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --muted: #64748b;
-  --surface: #ffffff;
-  --surface-soft: #f1f5f9;
-  --border: #e2e8f0;
-  --ink: #07111f;
-  --accent: #2563eb;
-  --accent-hover: #1d4ed8;
-  --accent-soft: #eff6ff;
-  --ring: #60a5fa;
+  /* Thème ciel — blocs vitreuses pour laisser voir ceil.jpg */
+  --background: transparent;
+  --foreground: #f1f5f9;
+  --muted: #a8b4c4;
+  --surface: rgba(7, 17, 31, 0.38);
+  --surface-soft: rgba(15, 23, 42, 0.28);
+  --border: rgba(255, 255, 255, 0.16);
+  --ink: #f8fafc;
+  --accent: #60a5fa;
+  --accent-hover: #93c5fd;
+  --accent-soft: rgba(37, 99, 235, 0.2);
+  --ring: #93c5fd;
   --navy: #07111f;
 }
 
@@ -51,14 +52,14 @@ html {
 }
 
 body {
-  background: var(--background);
+  background-color: transparent;
   color: var(--foreground);
   font-family: var(--font-source-sans), system-ui, sans-serif;
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--accent) 28%, white);
-  color: var(--ink);
+  background: color-mix(in srgb, var(--accent) 40%, transparent);
+  color: #fff;
 }
 
 .font-display {
@@ -66,18 +67,31 @@ body {
 }
 
 .hero-atmosphere {
-  background:
-    radial-gradient(ellipse 80% 60% at 15% 20%, rgba(37, 99, 235, 0.12), transparent 55%),
-    radial-gradient(ellipse 70% 50% at 90% 10%, rgba(7, 17, 31, 0.06), transparent 50%),
-    linear-gradient(180deg, #ffffff 0%, #f8fafc 55%, #eff6ff 100%);
+  background: transparent;
+}
+
+/* Cartes / panneaux : verre léger pour laisser voir le ciel */
+.glass-panel {
+  background: rgba(7, 17, 31, 0.32);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Les blocs surface gardent un léger flou pour la lisibilité */
+:where(.bg-surface, .bg-surface-soft) {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(18px);
   transition:
     opacity 0.7s ease,
     transform 0.7s ease;
+}
+
+.reveal.reveal-pending:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(18px);
 }
 
 .reveal.is-visible {
@@ -95,34 +109,134 @@ body {
   }
 }
 
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .animate-float {
   animation: float-soft 6s ease-in-out infinite;
 }
 
-.animate-fade-up {
-  animation: fade-up 0.8s ease forwards;
+.path-glow {
+  filter: drop-shadow(0 0 12px rgba(249, 115, 22, 0.35));
+}
+
+.path-glow-light {
+  filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.5));
+}
+
+.path-glow-orange {
+  filter: drop-shadow(0 0 14px rgba(249, 115, 22, 0.45));
+}
+
+/* Miroir / verre — section méthode */
+.method-mirror {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0.03) 35%,
+      rgba(7, 17, 31, 0.12) 70%,
+      rgba(7, 17, 31, 0.18) 100%
+    );
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.04),
+    0 20px 50px -28px rgba(0, 0, 0, 0.45);
+}
+
+.method-mirror::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.04) 28%,
+    transparent 48%
+  );
+  opacity: 0.7;
+}
+
+.path-draw {
+  stroke-dasharray: 1800;
+  stroke-dashoffset: 1800;
+  animation: path-draw 2.4s ease forwards;
+}
+
+@keyframes path-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.device-stage {
+  perspective: 1400px;
+  perspective-origin: 50% 45%;
+  min-height: 320px;
+}
+
+.device-spin {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  animation: device-spin-y 14s linear infinite;
+}
+
+.device-stage:hover .device-spin {
+  animation-play-state: paused;
+}
+
+.device-face {
+  width: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.device-face-front {
+  position: relative;
+  transform: translateZ(1px);
+}
+
+.device-face-back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotateY(180deg) translateZ(1px);
+}
+
+@keyframes device-spin-y {
+  from {
+    transform: rotateX(6deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(6deg) rotateY(360deg);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .reveal,
+  .reveal.reveal-pending:not(.is-visible) {
     opacity: 1;
     transform: none;
     transition: none;
   }
 
   .animate-float,
-  .animate-fade-up {
+  .device-spin,
+  .path-draw {
     animation: none;
+  }
+
+  .path-draw {
+    stroke-dashoffset: 0;
+  }
+
+  .device-spin {
+    transform: rotateX(4deg) rotateY(-12deg);
   }
 }

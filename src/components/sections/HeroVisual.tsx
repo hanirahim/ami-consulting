@@ -90,7 +90,7 @@ export function HeroVisual() {
               professionnels.
             </p>
             <div className="relative mt-4 flex flex-wrap gap-2">
-              <span className="rounded-lg bg-white px-3 py-1.5 text-[11px] font-semibold text-ink">
+              <span className="rounded-lg bg-white px-3 py-1.5 text-[11px] font-semibold text-navy">
                 Demander un devis
               </span>
               <span className="rounded-lg border border-white/30 bg-white/10 px-3 py-1.5 text-[11px] font-semibold text-white">

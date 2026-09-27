@@ -25,7 +25,7 @@ export const metadata: Metadata = buildMetadata({
 export default function ServicesPage() {
   return (
     <>
-      <section className="relative overflow-hidden border-b border-border bg-gradient-to-b from-white via-surface to-background py-14 sm:py-16 lg:py-20">
+      <section className="relative overflow-hidden border-b border-border bg-navy/30 py-14 sm:py-16 lg:py-20">
         <div
           className="pointer-events-none absolute -left-16 top-0 h-64 w-64 rounded-full bg-accent/15 blur-3xl"
           aria-hidden
@@ -36,7 +36,7 @@ export default function ServicesPage() {
         />
 
         <Container>
-          <CornerFrame className="rounded-3xl border border-border bg-white/80 p-5 shadow-[0_18px_48px_-28px_rgba(58,68,81,0.35)] backdrop-blur-sm sm:p-8 lg:p-10">
+          <CornerFrame className="rounded-3xl border border-border bg-surface/90 p-5 shadow-[0_18px_48px_-28px_rgba(0,0,0,0.45)] backdrop-blur-md sm:p-8 lg:p-10">
             <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
               <Reveal>
                 <SectionTitle
@@ -85,7 +85,7 @@ export default function ServicesPage() {
                       <li key={service.id}>
                         <a
                           href={`#${service.id}`}
-                          className="group flex items-center gap-3 rounded-xl border border-border bg-white px-3 py-2.5 transition hover:border-accent/40 hover:bg-accent-soft/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                          className="group flex items-center gap-3 rounded-xl border border-border bg-surface-soft px-3 py-2.5 transition hover:border-accent/40 hover:bg-accent-soft/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                         >
                           <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent-soft text-accent">
                             <AppIcon
@@ -188,7 +188,7 @@ export default function ServicesPage() {
                         {service.outcomes.map((item) => (
                           <li
                             key={item}
-                            className="rounded-xl border border-border bg-white px-3.5 py-3 text-sm font-medium text-ink"
+                            className="rounded-xl border border-border bg-surface-soft px-3.5 py-3 text-sm font-medium text-ink"
                           >
                             {item}
                           </li>

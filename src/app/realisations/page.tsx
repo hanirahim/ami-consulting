@@ -9,21 +9,21 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Réalisations",
   description:
-    "Concepts et démonstrations de sites web conçus dans l’esprit Ami Consulting — restaurant, artisan, cabinet professionnel.",
+    "Exemples de sites web réels et publics : restauration, artisanat, professions libérales et e-commerce.",
   path: "/realisations",
 });
 
 export default function RealisationsPage() {
   return (
     <>
-      <section className="border-b border-border bg-surface py-16 sm:py-20">
+      <section className="border-b border-border/40 bg-transparent py-16 sm:py-20">
         <Container>
           <Reveal>
             <SectionTitle
               as="h1"
-              eyebrow="Nos réalisations"
-              title="Des projets conçus pour convertir"
-              description="Chaque carte présente un concept de démonstration Ami Consulting. Ils seront remplacés progressivement par de vrais projets clients."
+              eyebrow="Exemples de sites"
+              title="Des sites réels, ouverts et vérifiables"
+              description="Chaque exemple renvoie vers un site public existant et une recherche Google. Une base concrète pour imaginer votre projet."
             />
           </Reveal>
         </Container>

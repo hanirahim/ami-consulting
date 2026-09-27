@@ -19,14 +19,14 @@ export function ProjectsSection({
   return (
     <section
       id="realisations"
-      className="border-y border-border bg-surface py-16 sm:py-20 lg:py-24"
+      className="border-y border-border/40 bg-transparent py-16 sm:py-20 lg:py-24"
     >
       <Container>
         <Reveal>
           <SectionTitle
-            eyebrow="Nos réalisations"
-            title="Des concepts concrets, pensés pour convertir"
-            description="Voici des démonstrations de ce qu’Ami Consulting sait produire. Elles seront remplacées progressivement par de vrais projets clients."
+            eyebrow="Exemples de sites"
+            title="Des sites réels à consulter"
+            description="Des exemples publics trouvables sur Google, pour visualiser ce qui fonctionne : clarté, mobile et conversion."
           />
         </Reveal>
 
@@ -56,7 +56,7 @@ export function ProjectsSection({
         {showCta ? (
           <Reveal className="mt-10">
             <Button href="/realisations" variant="secondary">
-              Voir toutes les réalisations
+              Voir tous les exemples
             </Button>
           </Reveal>
         ) : null}

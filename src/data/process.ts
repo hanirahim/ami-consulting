@@ -1,26 +1,50 @@
 export const processSteps = [
   {
     step: "01",
-    title: "Échange",
+    title: "Cahier des charges",
+    shortLabel: "CAHIER DES CHARGES",
     description:
-      "Comprendre l’activité, les objectifs et les besoins pour poser les bonnes bases du projet.",
+      "On clarifie vos objectifs, votre activité et le périmètre du site avant de démarrer.",
+    details: [
+      "Besoins et objectifs",
+      "Pages et fonctionnalités",
+      "Budget et délais",
+    ],
   },
   {
     step: "02",
     title: "Conception",
+    shortLabel: "CONCEPTION",
     description:
-      "Créer la structure et le design du site : message clair, parcours simple, identité soignée.",
+      "Structure, message et design : une maquette claire, pensée pour convertir.",
+    details: [
+      "Architecture des pages",
+      "Design sur mesure",
+      "Parcours utilisateur",
+    ],
   },
   {
     step: "03",
-    title: "Développement",
+    title: "Réalisation",
+    shortLabel: "RÉALISATION",
     description:
-      "Développer un site rapide, responsive et optimisé, prêt à être utilisé au quotidien.",
+      "Développement du site : rapide, responsive, avec une base SEO saine.",
+    details: [
+      "Intégration responsive",
+      "Formulaires et CTA",
+      "Optimisation technique",
+    ],
   },
   {
     step: "04",
     title: "Mise en ligne",
+    shortLabel: "MISE EN LIGNE",
     description:
-      "Publier le site et accompagner le client après la livraison pour démarrer sereinement.",
+      "Publication, tests finaux et accompagnement pour démarrer sereinement.",
+    details: [
+      "Mise en production",
+      "Contrôles qualité",
+      "Accompagnement post-livraison",
+    ],
   },
-];
+] as const;

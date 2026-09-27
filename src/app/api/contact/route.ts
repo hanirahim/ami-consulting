@@ -12,6 +12,10 @@ type ContactPayload = {
   budget?: string;
   timeline?: string;
   sector?: string;
+  situation?: string;
+  contentReady?: string;
+  goals?: string[];
+  features?: string[];
   message?: string;
   source?: string;
 };
@@ -34,6 +38,14 @@ export async function POST(request: Request) {
     const budget = body.budget?.trim() ?? "";
     const timeline = body.timeline?.trim() ?? "";
     const sector = body.sector?.trim() ?? "";
+    const situation = body.situation?.trim() ?? "";
+    const contentReady = body.contentReady?.trim() ?? "";
+    const goals = Array.isArray(body.goals)
+      ? body.goals.map((g) => String(g).trim()).filter(Boolean)
+      : [];
+    const features = Array.isArray(body.features)
+      ? body.features.map((f) => String(f).trim()).filter(Boolean)
+      : [];
     const source = body.source?.trim() || "contact";
 
     if (!firstName || !lastName || !email || !projectType || message.length < 20) {
@@ -60,6 +72,10 @@ export async function POST(request: Request) {
       budget,
       timeline,
       sector,
+      situation,
+      contentReady,
+      goals,
+      features,
       message,
       source,
     };
@@ -85,11 +101,15 @@ export async function POST(request: Request) {
           `Email: ${email}`,
           `Téléphone: ${phone || "—"}`,
           `Type de projet: ${projectType}`,
-          `Secteur: ${sector || "—"}`,
+          `Objectifs: ${goals.length ? goals.join(", ") : "—"}`,
+          `Situation: ${situation || "—"}`,
+          `Public / secteur: ${sector || "—"}`,
+          `Fonctionnalités: ${features.length ? features.join(", ") : "—"}`,
+          `Contenus: ${contentReady || "—"}`,
           `Budget: ${budget || "—"}`,
           `Délai: ${timeline || "—"}`,
           "",
-          "Message:",
+          "Brief / message:",
           message,
         ].join("\n"),
       });

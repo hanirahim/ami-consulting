@@ -9,13 +9,11 @@ type LogoProps = {
   size?: "nav" | "footer";
   priority?: boolean;
   onClick?: () => void;
-  /** Fond clair utile sur sections sombres (footer). */
-  onDark?: boolean;
 };
 
 const sizeClasses = {
-  nav: "h-[4.25rem] w-auto max-w-[340px] sm:h-[4.5rem] sm:max-w-[400px] md:max-w-[440px]",
-  footer: "h-14 w-auto max-w-[280px] sm:h-16 sm:max-w-[340px]",
+  nav: "h-9 w-auto max-w-[170px] sm:h-10 sm:max-w-[200px] md:h-11 md:max-w-[220px]",
+  footer: "h-11 w-auto max-w-[200px] sm:h-12 sm:max-w-[230px]",
 } as const;
 
 export function Logo({
@@ -23,15 +21,13 @@ export function Logo({
   size = "nav",
   priority = false,
   onClick,
-  onDark = false,
 }: LogoProps) {
   return (
     <Link
       href="/"
       onClick={onClick}
       className={cn(
-        "inline-flex shrink-0 items-center rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-        onDark && "rounded-2xl bg-white px-3 py-2.5 shadow-sm",
+        "inline-flex shrink-0 items-center rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-navy",
         className,
       )}
       aria-label={`${siteConfig.name} — accueil`}
@@ -43,7 +39,7 @@ export function Logo({
         height={siteConfig.logo.height}
         className={cn("object-contain object-center", sizeClasses[size])}
         priority={priority}
-        sizes="(max-width: 640px) 300px, (max-width: 768px) 360px, 420px"
+        sizes="(max-width: 640px) 190px, (max-width: 768px) 220px, 250px"
       />
     </Link>
   );

@@ -32,10 +32,12 @@ export function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/95 backdrop-blur-md">
-      <Container className="relative flex h-[5.5rem] items-center justify-between gap-4 sm:h-24">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-navy/45 backdrop-blur-md">
+      <Container className="flex h-16 items-center justify-between gap-4 sm:h-[4.5rem]">
+        <Logo onClick={closeMenu} priority size="nav" />
+
         <nav
-          className="z-10 hidden max-w-[42%] flex-wrap items-center gap-1 lg:flex"
+          className="hidden items-center gap-0.5 lg:flex"
           aria-label="Navigation principale"
         >
           {mainNav.map((item) => {
@@ -45,10 +47,10 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "rounded-lg px-2.5 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring xl:px-3",
+                  "rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                   active
-                    ? "bg-accent-soft text-accent"
-                    : "text-muted hover:bg-surface-soft hover:text-ink",
+                    ? "bg-white/10 text-white"
+                    : "text-white/65 hover:bg-white/5 hover:text-white",
                 )}
               >
                 {item.label}
@@ -57,20 +59,14 @@ export function Navbar() {
           })}
         </nav>
 
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="pointer-events-auto">
-            <Logo onClick={closeMenu} priority size="nav" />
-          </div>
-        </div>
-
-        <div className="z-10 ml-auto flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
           <div className="hidden lg:block">
             <Button href="/devis">Demander un devis</Button>
           </div>
 
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-white text-ink transition hover:bg-surface-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/20 bg-white/10 text-white transition hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
@@ -84,7 +80,7 @@ export function Navbar() {
       <div
         id="mobile-menu"
         className={cn(
-          "border-t border-border bg-background lg:hidden",
+          "border-t border-white/10 bg-navy/80 backdrop-blur-md lg:hidden",
           open ? "block" : "hidden",
         )}
       >
@@ -99,8 +95,8 @@ export function Navbar() {
                 className={cn(
                   "rounded-xl px-4 py-3 text-base font-medium transition-colors",
                   active
-                    ? "bg-accent-soft text-accent"
-                    : "text-ink hover:bg-surface-soft",
+                    ? "bg-white/10 text-white"
+                    : "text-white/80 hover:bg-white/5 hover:text-white",
                 )}
               >
                 {item.label}

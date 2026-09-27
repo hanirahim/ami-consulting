@@ -10,11 +10,18 @@ import { siteConfig } from "@/data/site";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Demander un devis",
+  title: "Brief & devis",
   description:
-    "Demandez un devis de création ou de refonte de site web à Ami Consulting. Formulaire rapide, réponse sous 24 à 48 h.",
+    "Brief rapide pour clarifier votre besoin web : objectif, utilisateurs, fonctions prioritaires, budget et délai.",
   path: "/devis",
 });
+
+const essentials = [
+  "Objectif et problème à résoudre",
+  "Qui utilise le produit",
+  "Fonctions prioritaires (V1)",
+  "Budget et délai",
+] as const;
 
 export default function DevisPage() {
   return (
@@ -24,12 +31,13 @@ export default function DevisPage() {
           <Reveal>
             <SectionTitle
               as="h1"
-              eyebrow="Devis"
-              title="Obtenez une proposition claire pour votre site"
-              description="Trois étapes pour démarrer : type de site, vos coordonnées, puis votre besoin. Nous revenons vers vous rapidement."
+              eyebrow="Brief & devis"
+              title="Clarifiez l’essentiel en quelques minutes"
+              description="Un formulaire court pour cadrer votre besoin — sans jargon. On affine les détails ensemble ensuite."
             />
+
             <ul className="mt-8 space-y-3 rounded-2xl border border-border bg-surface p-5">
-              {contactReassurance.map((item) => (
+              {essentials.map((item) => (
                 <li
                   key={item}
                   className="flex items-start gap-2.5 text-sm text-ink"
@@ -42,8 +50,24 @@ export default function DevisPage() {
                 </li>
               ))}
             </ul>
+
+            <ul className="mt-4 space-y-2.5 rounded-2xl border border-border bg-surface/70 p-5">
+              {contactReassurance.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-2.5 text-sm text-muted"
+                >
+                  <CheckCircle2
+                    className="mt-0.5 h-4 w-4 shrink-0 text-accent/80"
+                    aria-hidden
+                  />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
             <p className="mt-5 text-sm text-muted">
-              Ou écrivez directement à{" "}
+              Ou écrivez à{" "}
               <a
                 href={`mailto:${siteConfig.contact.email}`}
                 className="font-semibold text-accent hover:underline"
@@ -57,7 +81,7 @@ export default function DevisPage() {
             <Suspense
               fallback={
                 <div className="rounded-2xl border border-border bg-surface p-8 text-sm text-muted">
-                  Chargement du formulaire…
+                  Chargement…
                 </div>
               }
             >

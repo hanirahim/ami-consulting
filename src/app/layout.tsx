@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Outfit, Source_Sans_3 } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
+import { SkyBackground } from "@/components/ui/SkyBackground";
+import { ParticlesBackground } from "@/components/ui/ParticlesBackground";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { siteConfig } from "@/data/site";
 import { buildMetadata } from "@/lib/seo";
@@ -54,16 +56,20 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className="flex min-h-full flex-col bg-background font-sans text-foreground"
+        className="relative flex min-h-full flex-col font-sans text-foreground"
         suppressHydrationWarning
       >
+        <SkyBackground />
+        <ParticlesBackground />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <div className="relative z-10 flex min-h-full flex-1 flex-col">
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
         <WhatsAppButton />
       </body>
     </html>

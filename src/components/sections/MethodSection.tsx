@@ -1,32 +1,14 @@
-import { processSteps } from "@/data/process";
-import { ProcessStep } from "@/components/cards/ProcessStep";
 import { Container } from "@/components/layout/Container";
-import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Reveal } from "@/components/ui/Reveal";
+import { MethodPathTimeline } from "@/components/sections/MethodPathTimeline";
 
 export function MethodSection() {
   return (
-    <section id="methode" className="scroll-mt-24 py-16 sm:py-20 lg:py-24">
+    <section id="methode" className="scroll-mt-24 py-12 sm:py-16 lg:py-20">
       <Container>
         <Reveal>
-          <SectionTitle
-            eyebrow="Notre méthode"
-            title="Un processus simple, de la découverte à la mise en ligne"
-            description="Quatre étapes pour avancer sereinement, avec des points de validation clairs."
-          />
+          <MethodPathTimeline />
         </Reveal>
-
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {processSteps.map((step, index) => (
-            <Reveal key={step.step} delayMs={index * 70}>
-              <ProcessStep
-                step={step.step}
-                title={step.title}
-                description={step.description}
-              />
-            </Reveal>
-          ))}
-        </div>
       </Container>
     </section>
   );

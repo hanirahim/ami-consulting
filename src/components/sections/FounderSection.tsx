@@ -9,7 +9,7 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export function FounderSection() {
   return (
-    <section className="border-y border-border bg-navy py-16 text-white sm:py-20 lg:py-24">
+    <section className="border-y border-white/10 bg-navy/35 py-16 text-white backdrop-blur-sm sm:py-20 lg:py-24">
       <Container>
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,16rem)_1fr] lg:gap-14">
           <Reveal className="mx-auto w-full max-w-[14rem] lg:mx-0 lg:max-w-none">

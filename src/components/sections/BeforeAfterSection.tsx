@@ -19,7 +19,7 @@ const afterItems = [
 
 export function BeforeAfterSection() {
   return (
-    <section className="border-y border-border bg-surface py-16 sm:py-20 lg:py-24">
+    <section className="border-y border-border/40 bg-transparent py-16 sm:py-20 lg:py-24">
       <Container>
         <Reveal>
           <SectionTitle

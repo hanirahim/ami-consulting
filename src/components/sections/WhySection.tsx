@@ -7,7 +7,7 @@ import { CornerFrame } from "@/components/ui/CornerFrame";
 
 export function WhySection() {
   return (
-    <section className="border-y border-border bg-surface py-16 sm:py-20 lg:py-24">
+    <section className="border-y border-border/40 bg-transparent py-16 sm:py-20 lg:py-24">
       <Container>
         <CornerFrame className="rounded-3xl border border-border bg-background p-5 sm:p-8">
           <Reveal>

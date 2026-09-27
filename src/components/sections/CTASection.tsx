@@ -17,7 +17,7 @@ export function CTASection({
     <section className="pb-16 sm:pb-20 lg:pb-24">
       <Container>
         <Reveal>
-          <div className="relative overflow-hidden rounded-[1.75rem] bg-navy px-6 py-10 text-white sm:px-10 sm:py-12 lg:px-14">
+          <div className="relative overflow-hidden rounded-[1.75rem] border border-white/15 bg-navy/40 px-6 py-10 text-white backdrop-blur-md sm:px-10 sm:py-12 lg:px-14">
             <div
               className="pointer-events-none absolute -right-16 top-0 h-56 w-56 rounded-full bg-accent/30 blur-3xl"
               aria-hidden

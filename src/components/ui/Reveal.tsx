@@ -9,6 +9,10 @@ type RevealProps = {
   delayMs?: number;
 };
 
+/**
+ * Progressive enhancement only: content stays visible by default.
+ * Avoids "blank page" bugs when IntersectionObserver fails on tall sections.
+ */
 export function Reveal({ children, className, delayMs = 0 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -16,16 +20,23 @@ export function Reveal({ children, className, delayMs = 0 }: RevealProps) {
     const node = ref.current;
     if (!node) return;
 
-    const show = () => node.classList.add("is-visible");
-
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (media.matches) {
+      node.classList.add("is-visible");
+      return;
+    }
+
+    const show = () => node.classList.add("is-visible");
+
+    // Already in (or near) viewport → show immediately, no hide
+    const rect = node.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.95 && rect.bottom > 0) {
       show();
       return;
     }
 
-    // Fallback: never leave content invisible if IO fails (tall sections, etc.)
-    const fallback = window.setTimeout(show, 1200);
+    node.classList.add("reveal-pending");
+    const fallback = window.setTimeout(show, 800);
 
     const observer = new IntersectionObserver(
       ([entry]) => {

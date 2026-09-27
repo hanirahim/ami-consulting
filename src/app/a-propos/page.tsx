@@ -25,9 +25,9 @@ export const metadata: Metadata = buildMetadata({
 export default function AboutPage() {
   return (
     <>
-      <section className="border-b border-border bg-surface py-16 sm:py-20">
+      <section className="border-b border-border/40 bg-transparent py-16 sm:py-20">
         <Container>
-          <CornerFrame className="rounded-3xl border border-border bg-white p-5 sm:p-8 lg:p-10">
+          <CornerFrame className="rounded-3xl border border-border bg-surface/90 p-5 backdrop-blur-md sm:p-8 lg:p-10">
             <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
               <Reveal>
                 <SectionTitle

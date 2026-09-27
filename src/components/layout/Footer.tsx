@@ -20,7 +20,7 @@ export function Footer() {
 
   return (
     <footer className="mt-auto">
-      <div className="border-t border-border bg-surface">
+      <div className="border-t border-border/40 bg-surface/50 backdrop-blur-sm">
         <Container className="py-10 sm:py-12">
           <div className="flex flex-col gap-6 rounded-2xl bg-accent-soft px-6 py-7 sm:flex-row sm:items-center sm:justify-between sm:px-8">
             <div className="max-w-xl">
@@ -40,11 +40,11 @@ export function Footer() {
         </Container>
       </div>
 
-      <div className="border-t border-border bg-navy text-white">
+      <div className="border-t border-white/10 bg-navy/50 text-white backdrop-blur-sm">
         <Container className="py-14 sm:py-16">
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-4">
-              <Logo onDark size="footer" />
+              <Logo size="footer" />
               <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/70">
                 {siteConfig.tagline} pour entreprises, indépendants, commerces
                 et professionnels.

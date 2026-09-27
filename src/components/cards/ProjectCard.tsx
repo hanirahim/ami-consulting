@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ExternalLink, Search } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
 
@@ -15,10 +17,15 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         className,
       )}
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-surface-soft">
+      <a
+        href={project.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative block aspect-[16/10] overflow-hidden bg-surface-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+      >
         <Image
           src={project.image}
-          alt={`Aperçu — ${project.name}`}
+          alt={`Capture du site ${project.name}`}
           fill
           unoptimized
           className="object-cover object-top transition duration-500 group-hover:scale-[1.02]"
@@ -27,7 +34,10 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         <span className="absolute left-3 top-3 rounded-lg bg-navy/90 px-2.5 py-1 text-[11px] font-semibold text-white">
           {project.label}
         </span>
-      </div>
+        <span className="absolute bottom-3 left-3 rounded-lg bg-white/95 px-2.5 py-1 text-xs font-semibold text-ink">
+          {project.displayUrl}
+        </span>
+      </a>
 
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <p className="text-xs font-semibold uppercase tracking-[0.12em] text-accent">
@@ -57,6 +67,27 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
             </li>
           ))}
         </ul>
+
+        <div className="mt-auto flex flex-col gap-2 pt-5 sm:flex-row">
+          <Link
+            href={project.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-accent px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            Voir le site
+            <ExternalLink className="h-4 w-4" aria-hidden />
+          </Link>
+          <Link
+            href={project.googleUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-border bg-surface px-4 py-2.5 text-sm font-semibold text-ink transition hover:bg-surface-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            Google
+            <Search className="h-4 w-4" aria-hidden />
+          </Link>
+        </div>
       </div>
     </article>
   );
