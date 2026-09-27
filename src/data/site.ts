@@ -7,7 +7,7 @@ export const siteConfig = {
   url: "https://amiconsulting.fr",
   locale: "fr_FR",
   logo: {
-    src: "/logo-nouveau.png",
+    src: "/logo-clair.png",
     alt: "Ami Consulting — Création de sites web sur mesure",
     width: 760,
     height: 328,

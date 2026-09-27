@@ -12,8 +12,8 @@ type LogoProps = {
 };
 
 const sizeClasses = {
-  nav: "h-9 w-auto max-w-[170px] sm:h-10 sm:max-w-[200px] md:h-11 md:max-w-[220px]",
-  footer: "h-11 w-auto max-w-[200px] sm:h-12 sm:max-w-[230px]",
+  nav: "h-10 w-auto max-w-[180px] sm:h-11 sm:max-w-[210px] md:h-12 md:max-w-[240px]",
+  footer: "h-12 w-auto max-w-[220px] sm:h-14 sm:max-w-[250px]",
 } as const;
 
 export function Logo({
